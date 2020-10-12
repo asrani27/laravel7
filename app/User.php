@@ -28,6 +28,11 @@ class User extends Authenticatable
     {
         return $this->where('name', '!=' , 'asrani')->get();
     }
+    
+    public function scopeAdmin()
+    {
+        return $this->where('name', '==' , 'asrani')->get();
+    }
     /**
      * The attributes that should be hidden for arrays.
      *

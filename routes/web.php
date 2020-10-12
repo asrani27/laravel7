@@ -14,13 +14,15 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
-});
+Route::get('/', 'MailController@index');
+Route::get('/pegawai', 'PegawaiController@index');
+Route::post('/angka/{id}/update', 'PegawaiController@update');
 
 Auth::routes(['register' => false]);
 
 Route::get('/home', 'HomeController@index')->name('home');
+Route::post('/role/save', 'HomeController@roleSave');
+Route::get('export', 'HomeController@export');
 
 Auth::routes();
 
@@ -31,6 +33,11 @@ Route::get('notif/{name}', function ($name) {
     return back();
 });
 
-Route::get('testing', function(){
+Route::get('testing', function () {
     return view('testing');
 });
+
+
+// Route::get('pegawai', function () {
+//     return view('testing');
+// });
